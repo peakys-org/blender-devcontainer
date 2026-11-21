@@ -22,7 +22,7 @@
         }
     },
     "onCreateCommand": "npm install -g @devcontainers/cli",
-    "postCreateCommand": "devcontainer templates apply --template-id ghcr.io/peakys-org/blender-devcontainer/blender-devcontainer --omit-paths '[\".git/*\", \".github/*\", \".gitignore\", \"blender_services.json\", \"novnc_setup/*\"]'",
+    "postCreateCommand": "devcontainer templates apply --template-id ghcr.io/peakys-org/blender-devcontainer/blender-devcontainer --omit-paths '[\".git/*\", \".github/*\", \".gitignore\", \"blender_services.json\", \"novnc_setup/*\", \".devcontainer.json\"]'",
     "postStartCommand": "bash postStartCommand.sh"
     // "postAttachCommand": "devcontainer up --workspace-folder ."
 }
