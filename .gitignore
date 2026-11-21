@@ -1,2 +1,7 @@
 output-*
+.devcontainer/devcontainer/
+.devcontainer/blender/
+.devcontainer/novnc/
+output*.log
+obfuscated/
 repository/

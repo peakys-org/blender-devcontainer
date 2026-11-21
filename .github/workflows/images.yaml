@@ -38,6 +38,7 @@ jobs:
   build-push:
     name: Build and push container image
     needs: filter
+    if: ${{ needs.filter.outputs.changes != '[]' }}
     runs-on: ubuntu-latest
     strategy:
       matrix: 
