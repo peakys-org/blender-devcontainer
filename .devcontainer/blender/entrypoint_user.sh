@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
-# set default configuration values for sway and wayvnc
-# apply configuration values to sway and wayvnc config files
-# 各ファイルの中の環境変数を、その値に置き換える。
-WAYVNC_PORT="${WAYVNC_PORT:-5901}"
-sed ~/.config/wayvnc/config -i -e "s/\$WAYVNC_PORT/$WAYVNC_PORT/g"
+# WAYVNC_PORT is the externally published WebSocket port served by websockify
+# (see ~/.config/sway/config). wayvnc itself listens on 127.0.0.1:5901 only.
+export WAYVNC_PORT="${WAYVNC_PORT:-5900}"
 
 CURRENT_DIR="$(dirname $0)"
 . "$CURRENT_DIR/reload.sh"

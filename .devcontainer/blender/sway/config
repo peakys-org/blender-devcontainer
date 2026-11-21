@@ -6,4 +6,5 @@ bindsym --release Escape kill
 for_window [app_id="blender"] floating enable
 
 exec echo "export SWAYSOCK=$SWAYSOCK" > /tmp/sway-env
-exec wayvnc --websocket --transient-seat --render-cursor --verbose
+exec wayvnc --transient-seat --render-cursor --verbose
+exec /opt/websockify/bin/websockify 0.0.0.0:${WAYVNC_PORT:-5900} 127.0.0.1:5901

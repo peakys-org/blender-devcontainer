@@ -5,7 +5,7 @@ RUN pacman -Syyu --noconfirm
 ARG USER=user
 ARG PUID=1000
 ARG PGID=1000
-ARG RENDER_GROUP_GID=107
+ARG RENDER_GROUP_GID=997
 ARG BLENDER_VERSION=4.5.0
 
 ENV DOCKER_USER=$USER
@@ -17,7 +17,7 @@ ENV SERVICE_NAME=${SERVICE_NAME:-blender}
 USER root
 RUN groupadd -g $PGID $USER
 RUN useradd -ms /bin/bash -u $PUID -g $PGID $USER
-RUN groupadd -g $RENDER_GROUP_GID docker-render
+RUN groupadd -o -g $RENDER_GROUP_GID docker-render
 RUN usermod -aG docker-render $USER
 
 WORKDIR /workspaces/
@@ -35,6 +35,13 @@ RUN curl -o blender.tar.xz https://download.blender.org/release/Blender${BLENDER
 
 # Install other tools
 RUN pacman -Syu --noconfirm jq inotify-tools
+
+# Install websockify (not in the Arch repos) into a venv.
+# wayvnc's built-in --websocket mode segfaults on client connect with
+# Arch's wayvnc 0.10.2 / neatvnc 1.0.3 (see any1/neatvnc#177), so the
+# WebSocket layer is provided by websockify in front of a plain wayvnc.
+RUN python -m venv /opt/websockify \
+    && /opt/websockify/bin/pip install --no-cache-dir websockify
 
 # Clean up pacman cache
 RUN pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/* /root/.cache

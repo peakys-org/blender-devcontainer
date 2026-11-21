@@ -4,7 +4,7 @@ x-blender:
     context: blender/
     args:
       - BLENDER_VERSION=<x-version>
-      - RENDER_GROUP_GID=107 # replace with GID of the group which owns the /dev/dri/renderD128 device
+      - RENDER_GROUP_GID=997 # replace with GID of the group which owns the /dev/dri/renderD128 device
   image: ghcr.io/peakys-org/blender-devcontainer/blender:<x-version>
   environment:
     - WAYVNC_PORT=5900
@@ -59,7 +59,7 @@ services:
       context: blender/
       args:
         - BLENDER_VERSION=5.2.4
-        - RENDER_GROUP_GID=107 # replace with GID of the group which owns the /dev/dri/renderD128 device
+        - RENDER_GROUP_GID=997 # replace with GID of the group which owns the /dev/dri/renderD128 device
     image: ghcr.io/peakys-org/blender-devcontainer/blender:5.2.4
     environment:
       - WAYVNC_PORT=5900
