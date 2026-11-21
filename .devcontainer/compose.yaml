@@ -27,9 +27,7 @@ x-blender:
 
 x-volumes: &id001
   - ../:/workspaces/development/
-  - blender-4.5-a:/workspaces/blender-4.5-a/
-  - blender-4.5-b:/workspaces/blender-4.5-b/
-  - blender-5.0:/workspaces/blender-5.0/
+  - blender-5.2:/workspaces/blender-5.2/
 configs:
   novnc:
     file: ./blender_services.json
@@ -55,77 +53,24 @@ services:
     configs:
       - source: novnc
         target: /app/blender_services.json
-  blender-4.5-a:
+  blender-5.2:
     privileged: true
     build:
       context: blender/
       args:
-        - BLENDER_VERSION=4.5.4
+        - BLENDER_VERSION=5.2.4
         - RENDER_GROUP_GID=107 # replace with GID of the group which owns the /dev/dri/renderD128 device
-    image: ghcr.io/peakys-org/blender-devcontainer/blender:4.5.4
+    image: ghcr.io/peakys-org/blender-devcontainer/blender:5.2.4
     environment:
       - WAYVNC_PORT=5900
-      - SERVICE_NAME=blender-4.5-a
-      - EXTENSIONS=${EXTENSIONS:-/workspaces/development/extensions/}
-      - REPOSITORY=${REPOSITORY:-/workspaces/development/repository/}
-    ports:
-      - 5901:5900
-    volumes:
-      - ../:/workspaces/development/
-      - blender-4.5-a:/workspaces/blender/
-      - ../portable/:/workspaces/blender/portable/
-  # deploy:
-  #   resources:
-  #     reservations:
-  #       devices:
-  #         - driver: nvidia
-  #           capabilities: [gpu]
-  #           count: all
-
-  blender-4.5-b:
-    privileged: true
-    build:
-      context: blender/
-      args:
-        - BLENDER_VERSION=4.5.4
-        - RENDER_GROUP_GID=107 # replace with GID of the group which owns the /dev/dri/renderD128 device
-    image: ghcr.io/peakys-org/blender-devcontainer/blender:4.5.4
-    environment:
-      - WAYVNC_PORT=5900
-      - SERVICE_NAME=blender-4.5-b
-      - EXTENSIONS=${EXTENSIONS:-/workspaces/development/extensions/}
-      - REPOSITORY=${REPOSITORY:-/workspaces/development/repository/}
-    ports:
-      - 5902:5900
-    volumes:
-      - ../:/workspaces/development/
-      - blender-4.5-b:/workspaces/blender/
-  # deploy:
-  #   resources:
-  #     reservations:
-  #       devices:
-  #         - driver: nvidia
-  #           capabilities: [gpu]
-  #           count: all
-
-  blender-5.0:
-    privileged: true
-    build:
-      context: blender/
-      args:
-        - BLENDER_VERSION=5.0.0
-        - RENDER_GROUP_GID=107 # replace with GID of the group which owns the /dev/dri/renderD128 device
-    image: ghcr.io/peakys-org/blender-devcontainer/blender:5.0.0
-    environment:
-      - WAYVNC_PORT=5900
-      - SERVICE_NAME=blender-5.0
+      - SERVICE_NAME=blender-5.2
       - EXTENSIONS=${EXTENSIONS:-/workspaces/development/extensions/}
       - REPOSITORY=${REPOSITORY:-/workspaces/development/repository/}
     ports:
       - 5903:5900
     volumes:
       - ../:/workspaces/development/
-      - blender-5.0:/workspaces/blender/
+      - blender-5.2:/workspaces/blender/
       - ../portable/:/workspaces/blender/portable/
   # deploy:
   #   resources:
@@ -136,6 +81,4 @@ services:
   #           count: all
 
 volumes:
-  blender-4.5-a:
-  blender-4.5-b:
-  blender-5.0:
+  blender-5.2:

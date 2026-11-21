@@ -1,5 +1,3 @@
 {
-    "blender-4.5-a": {"version": "4.5.4", "port": 5901, "resources": "../portable/"},
-    "blender-4.5-b": {"version": "4.5.4", "port": 5902},
-    "blender-5.0": {"version": "5.0.0", "port": 5903, "resources": "../portable/"}
+    "blender-5.2": {"version": "5.2.4", "port": 5903, "resources": "../portable/"}
 }
