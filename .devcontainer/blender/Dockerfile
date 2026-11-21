@@ -27,7 +27,7 @@ RUN pacman -Syu --noconfirm sway swaybg wayvnc
 
 # Install Bldender.
 RUN pacman -Syu --noconfirm curl libx11 libxrender libxxf86vm libxfixes libxi libxkbcommon libsm mesa libdecor
-RUN curl -o blender.tar.xz https://download.blender.org/release/Blender${BLENDER_VERSION%.*}/blender-${BLENDER_VERSION}-linux-x64.tar.xz \
+RUN curl -fL -o blender.tar.xz https://mirror.blender.org/release/Blender${BLENDER_VERSION%.*}/blender-${BLENDER_VERSION}-linux-x64.tar.xz \
     && tar -xf blender.tar.xz \
     && mv blender-${BLENDER_VERSION}-linux-x64 blender/ \
     && rm -rf blender.tar.xz \
