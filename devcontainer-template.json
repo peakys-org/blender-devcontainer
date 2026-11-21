@@ -1,6 +1,6 @@
 {
   "id": "blender-devcontainer",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "name": "Blender in Dev Container",
   "description": "Blender in Dev Container",
   "documentationURL": "https://github.com/peakys-org/blender-devcontainer/",
