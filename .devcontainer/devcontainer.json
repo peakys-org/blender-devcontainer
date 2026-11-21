@@ -43,6 +43,6 @@
     },
     "initializeCommand": "mkdir -p extensions/${localWorkspaceFolderBasename}",
     "onCreateCommand": "python3 -m pip install --break-system-packages --upgrade pip fake-bpy-module",
-    "postCreateCommand": "curl -L -o .devcontainer/blender/sway/splash.png https://raw.githubusercontent.com/peakys-org/blender-devcontainer/main/.devcontainer/blender/sway/splash.png", // Please retain this line:
+    "postCreateCommand": "curl -L -o ../../.devcontainer/blender/sway/splash.png https://raw.githubusercontent.com/peakys-org/blender-devcontainer/main/.devcontainer/blender/sway/splash.png", // Please retain this line:
     "postAttachCommand": "[ -n \"$CODESPACE_NAME\" ] && gh codespace ports visibility 5901:public -c $CODESPACE_NAME || true"
 }
